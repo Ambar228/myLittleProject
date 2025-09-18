@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  identidock:
+    build: .
+    ports:
+      - "9090:9090"
+    environment:
+      ENV: PROD
+    depends_on:
+      - redis
+      - dnmonster
+
+  dnmonster:
+    image: amouat/dnmonster:1.0
+
+  redis:
+    image: redis:3.0
