@@ -19,9 +19,9 @@ services:
     container_name: logstash
     ports:
       - "5044:5044"
-      - "5001:5000"
+      - "5001:5001"
     volumes:
-      - ./logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
     environment:
       - LS_JAVA_OPTS=-Xmx256m -Xms256m
     depends_on:
@@ -40,19 +40,6 @@ services:
       - elasticsearch
     networks:
       - elk-net
-
- # filebeat: 
-  #  image: filebeat:7.17.0
-   # container_name: filebeat
-    #volumes:
-     # - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
-      #- /var/lib/docker/containers:/var/lib/docker/containers:ro
-      #- /var/run/docker.sock:/var/run/docker.sock
-   # depends_on:
-    #  - elasticsearch
-     # - logstash
-   # networks:
-    #  - elk-net
 
 volumes: 
   elasticsearch_data:
