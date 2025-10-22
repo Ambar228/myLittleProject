@@ -11,9 +11,20 @@ services:
     depends_on:
       - dnmonster
       - redis
+    networks:
+      - elk-net
 
   dnmonster:
     image: amouat/dnmonster:1.0
+    networks:
+      - elk-net
 
   redis:
     image: redis:3.0
+    networks:
+      - elk-net
+
+networks:
+  elk-net:
+    external: true
+    name: elk_elk-net
