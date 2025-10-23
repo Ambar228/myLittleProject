@@ -43,7 +43,7 @@ class LogstashLogger:
             print(f"Failed to send log: {e}")
             return False
 
-logger = LogstashLogger(host='localhost', port=5001)
+logger = LogstashLogger(host='logstash', port=5001)
 
 @app.before_request
 def log_request_start():
